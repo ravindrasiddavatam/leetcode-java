@@ -1,0 +1,37 @@
+public class LongestCommonPrefix {
+    public static String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+        // Take the first string as the initial common prefix
+        String commonPrefix = strs[0];
+
+        // Iterate through the array of strings
+        for (int i = 1; i < strs.length; i++) {
+            // Compare the current common prefix with the next string
+            int j = 0;
+            while (j < commonPrefix.length() && j < strs[i].length() && commonPrefix.charAt(j) == strs[i].charAt(j)) {
+                j++;
+            }
+
+            // Update the common prefix based on the comparison
+            commonPrefix = commonPrefix.substring(0, j);
+
+            // If the common prefix becomes empty, break the loop since there is no common prefix
+            if (commonPrefix.isEmpty()) {
+                break;
+            }
+        }
+
+        return commonPrefix;
+    }
+
+    public static void main(String[] args) {
+        String[] example1 = {"flower", "flow", "flight"};
+        String[] example2 = {"dog", "racecar", "car"};
+
+        System.out.println(longestCommonPrefix(example1)); // Output: "fl"
+        System.out.println(longestCommonPrefix(example2)); // Output: ""
+    }
+}
