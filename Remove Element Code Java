@@ -1,0 +1,27 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        
+       int left=0;
+       int right = nums.length-1;
+        
+       while(left <= right){
+           if(nums[left]==val)
+           {
+               nums[left]=nums[right];
+               right--;
+           } else{
+               left++;
+           }
+       }
+        return left;
+    }
+    
+    public static void main(String[] args)
+    {
+        Solution s=new Solution();
+        int[] nums={3,2,3,1};
+        int val=3;
+        int result=s.removeElement(nums,val);
+        System.out.println(result);
+    }
+}
