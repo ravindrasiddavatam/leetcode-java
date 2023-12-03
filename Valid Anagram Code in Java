@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        
+        char[] charArray= s.toCharArray();
+        Arrays.sort(charArray);
+
+        char[] charArray1=t.toCharArray();
+        Arrays.sort(charArray1);
+
+        String result =new String(charArray);
+        String result1= new String(charArray1);
+
+        return result.equals(result1);       
+
+    }
+    public static void main(String[] args)
+    {
+        Solution s=new Solution();
+        String s1= "rat";
+        String t= "car";
+        System.out.println(s.isAnagram(s1,t));
+
+    }
+}
