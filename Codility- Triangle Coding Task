@@ -1,0 +1,39 @@
+import java.util.Arrays;
+
+public class Solution {
+    public static void main(String[] args) {
+        // Example array
+        int[] A = {10, 2, 5, 1, 8, 20};
+
+        // Create an instance of Solution
+        Solution solution = new Solution();
+
+        // Call the solution method and print the result
+        int result = solution.solution(A);
+        System.out.println("Result: " + result);
+    }
+
+    public int solution(int[] A) {
+        int N = A.length;
+
+        if (N < 3) {
+            // Cannot form a triangular triplet with less than 3 elements
+            return 0;
+        }
+
+        // Sort the array in non-decreasing order
+        Arrays.sort(A);
+
+        for (int i = 0; i < N - 2; i++) {
+            if (isTriangular(A[i], A[i + 1], A[i + 2])) {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    private boolean isTriangular(int P, int Q, int R) {
+        return (long) P + Q > R && (long) Q + R > P && (long) R + P > Q;
+    }
+}
