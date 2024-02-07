@@ -18,3 +18,17 @@ class Solution {
         return result;
     }
 }
+
+
+
+At i=0, first[0] = 'f' and last[0] = 'f', so we append 'f' to sb. At i=1, first[1] = 'l' and last[1] = 'l', so we append 'l' to sb. how the f and l will store in sb? is it like individual characters or like a string ?
+ChatGPT
+ChatGPT
+My apologies for misunderstanding your question earlier.
+In Java, the StringBuilder class allows you to append individual characters using the append(char) method. When you append characters one by one to a StringBuilder, it internally stores them as a sequence of characters.
+So, in the scenario you mentioned:
+1.	At i=0, 'f' is appended to sb. sb: 'f'
+2.	At i=1, 'l' is appended to sb. sb: 'f' 'l'
+Here, 'f' and 'l' are stored as individual characters in sb. It's not stored as a single string, but rather as a sequence of characters within the StringBuilder.
+In Java, you can think of a StringBuilder as a mutable sequence of characters, where each character is stored individually, allowing you to efficiently manipulate strings. When you eventually call sb.toString(), it will convert this sequence of characters into a single string.
+
