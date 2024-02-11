@@ -1,0 +1,52 @@
+import java.util.*;
+
+public class BFS {
+    public static boolean bfs(int[][] graph, int start, int goal) {
+        Queue<Integer> queue = new LinkedList<>();
+        Set<Integer> visited = new HashSet<>();
+
+        queue.offer(start);
+        visited.add(start);
+
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            if (node == goal) {
+                return true;
+            }
+
+            for (int neighbor : graph[node]) {
+                if (!visited.contains(neighbor)) {
+                    queue.offer(neighbor);
+                    visited.add(neighbor);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        // Example graph represented as an adjacency list
+        int[][] graph = {
+                {1, 2},
+                {0, 3, 4},
+                {0, 5},
+                {1},
+                {1, 6},
+                {2},
+                {4}
+        };
+
+        int startNode = 0;
+        int goalNode = 9;
+
+        boolean found = bfs(graph, startNode, goalNode);
+
+        if (found) {
+            System.out.println("Goal node found!");
+        } else {
+            System.out.println("Goal node not found.");
+        }
+    }
+}
+
