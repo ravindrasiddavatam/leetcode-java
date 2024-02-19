@@ -1,0 +1,41 @@
+public class Solution {
+    public boolean isStrictlyPalindromic(int n) {
+        for (int base = 2; base <= n - 2; base++) {
+            String baseRepresentation = convertToBase(n, base);
+            if (!isPalindrome(baseRepresentation)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isPalindrome(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    private String convertToBase(int n, int base) {
+        StringBuilder sb = new StringBuilder();
+        while (n > 0) {
+            sb.insert(0, n % base);
+            n /= base;
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int n1 = 9;
+        int n2 = 4;
+        System.out.println("Output for n1 = " + n1 + ": " + solution.isStrictlyPalindromic(n1));
+        System.out.println("Output for n2 = " + n2 + ": " + solution.isStrictlyPalindromic(n2));
+    }
+}
