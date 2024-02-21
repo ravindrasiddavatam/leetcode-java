@@ -1,0 +1,35 @@
+class Solution {
+    public List<List<Integer>> groupThePeople(int[] groupSizes) {
+
+        // Initialize a map to store groups
+        Map<Integer, List<Integer>> groupsMap = new HashMap<>();
+        // Initialize a list to store the result
+        List<List<Integer>> result = new ArrayList<>();
+
+        // Iterate through the groupSizes array
+        for (int i = 0; i < groupSizes.length; i++) {
+            int size = groupSizes[i];
+
+            // If the group size doesn't exist in the map, create a new group
+            if (!groupsMap.containsKey(size)) {
+                groupsMap.put(size, new ArrayList<>());
+            }
+
+            // Get the group corresponding to the current size
+            List<Integer> group = groupsMap.get(size);
+
+            // Add the current person's ID to the group
+            group.add(i);
+
+            // If the group is now full, add it to the result and create a new group
+            if (group.size() == size) {
+                result.add(group);
+                groupsMap.put(size, new ArrayList<>()); // Create a new group for the next set of people
+            }
+        }
+
+        return result;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    }
+}
