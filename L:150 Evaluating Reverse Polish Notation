@@ -1,0 +1,64 @@
+class Solution {
+    public int evalRPN(String[] tokens) {
+
+        Stack<Integer> stack = new Stack<>();
+        for(String token:tokens)
+        {
+            if(token.equals("+"))
+            {
+                int b = stack.pop();
+                int a = stack.pop();
+                stack.push(a+b);
+            } else if (token.equals("-")){
+                int b = stack.pop();
+                int a = stack.pop();
+                stack.push(a-b);
+            } else if (token.equals("*")){
+                int b = stack.pop();
+                int a = stack.pop();
+                stack.push(a * b);
+
+            }else if (token.equals("/")){
+                int b = stack.pop();
+                int a = stack.pop();
+                stack.push(a / b);
+
+            } else {
+                stack.push(Integer.parseInt(token));
+            }
+        }
+        return stack.pop();
+        
+    }
+}
+
+Code Explanation:
+
+This code is an implementation of evaluating Reverse Polish Notation (RPN) expressions using a stack data structure. Reverse Polish Notation is a mathematical notation in which every operator follows all of its operands.
+
+Let's break down the code in detail:
+
+The method evalRPN takes an array of strings tokens, representing the RPN expression, and returns the result of the evaluation as an integer.
+
+Inside the method, a stack of integers stack is initialized to store intermediate results during the evaluation.
+
+The code iterates through each token in the tokens array using an enhanced for loop.
+
+For each token:
+
+If the token is an operator (+, -, *, /), it pops the last two elements from the stack, performs the operation, and pushes the result back onto the stack.
+If the token is a number, it parses the string token into an integer and pushes it onto the stack.
+After processing all tokens, the final result is obtained by popping the only remaining element from the stack, which should be the result of the RPN expression.
+
+Finally, the method returns the result.
+
+Here's a more detailed explanation of the operations inside the loop:
+
+If the token is an operator (+, -, *, /):
+Pop the top two elements (b and a) from the stack.
+Perform the corresponding operation (a + b, a - b, a * b, or a / b).
+Push the result back onto the stack.
+If the token is a number:
+Parse the token into an integer.
+Push the integer onto the stack.
+This process continues until all tokens are processed, and the final result is obtained from the stack. This approach efficiently evaluates RPN expressions using a stack, ensuring that the operands and operators are processed in the correct order.
