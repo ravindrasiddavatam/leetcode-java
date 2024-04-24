@@ -20,3 +20,29 @@ class Solution {
 
     }
 }
+The reason for the "Time Limit Exceeded" error is that the current solution has a time complexity of O(n^2) due to the nested loops. This means that as the size of the input array increases, the time taken to execute the algorithm grows quadratically.
+
+To optimize the solution and avoid this issue, we can use a more efficient approach. One way to do this is by using a HashSet to keep track of the elements we have encountered so far. We can iterate through the array and check if each element is already in the HashSet. If it is, we return true because we have found a duplicate. If not, we add it to the HashSet. If we finish iterating through the entire array without finding any duplicates, we return false.
+
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        
+       HashSet set=new HashSet();
+
+        for(int num:nums)
+        {
+            if(set.contains(num))
+            {
+                return true;
+            }else{
+                set.add(num);
+                
+            }
+        }
+        return false;
+    }
+    
+}
+
+This approach has a time complexity of O(n), where n is the number of elements in the array. It should pass all the test cases without exceeding the time limit. Let me know if you have any questions!
