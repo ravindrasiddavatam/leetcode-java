@@ -25,3 +25,39 @@ class Solution {
         return gy;
     }
 }
+
+In Java, the foreach loop, also known as the enhanced for loop, provides a concise way to iterate over elements of arrays, collections, or any object that implements the Iterable interface. Its syntax is simpler compared to traditional for loops and it's particularly useful when you want to iterate over all elements of a collection without needing to keep track of indices. Here's the syntax:
+
+java
+Copy code
+for (elementType element : collection) {
+    // code block to be executed for each element
+}
+Where:
+
+elementType is the data type of elements in the collection.
+element is a variable that represents each individual element in the collection during each iteration.
+collection is the collection or array over which you want to iterate.
+Here's a simple example using a foreach loop to iterate over an array:
+
+java
+Copy code
+public class ForEachLoopExample {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        
+        // Using foreach loop to print each element of the array
+        for (int number : numbers) {
+            System.out.println(number);
+        }
+    }
+}
+This will output:
+
+Copy code
+1
+2
+3
+4
+5
+The foreach loop iterates over each element in the numbers array, assigning the current element to the variable number, and then executes the code block within the loop for each element.
