@@ -1,0 +1,17 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        
+       StringBuilder  normalized = new StringBuilder();
+
+       for(char c : s.toCharArray()) {
+        if(Character.isLetterOrDigit(c)){
+            normalized.append(Character.toLowerCase(c));
+        }
+       }
+
+       String normalizedStr=normalized.toString();
+       String reversedStr=normalized.reverse().toString();
+
+       return normalizedStr.equals(reversedStr);
+    }
+}
