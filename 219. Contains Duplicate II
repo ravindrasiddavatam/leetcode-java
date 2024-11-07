@@ -1,19 +1,48 @@
-class Solution {
-    public boolean containsNearbyDuplicate(int[] nums, int k) {
-        
-        HashMap<Integer,Integer> map = new HashMap<>();
+import java.util.HashMap;
+import java.util.Map;
 
-        for(int i=0;i<nums.length;i++){
-            if(map.containsKey(nums[i])){
-                int j = map.get(nums[i]);
-                if(Math.abs(i - j)<=k){
+public class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        // Map to store the last seen index of each number
+        Map<Integer, Integer> indexMap = new HashMap<>();
+
+        // Iterate through the array
+        for (int i = 0; i < nums.length; i++) {
+            int currentNum = nums[i];
+
+            // Check if the number is already in the map
+            if (indexMap.containsKey(currentNum)) {
+                // Calculate the difference between indices
+                int lastIndex = indexMap.get(currentNum);
+                if (i - lastIndex <= k) {
                     return true;
                 }
             }
-            map.put(nums[i],i);
+
+            // Update the map with the current index of the number
+            indexMap.put(currentNum, i);
         }
+
+        // If no such pair found, return false
         return false;
+    }
 
+    public static void main(String[] args) {
+        Solution solution = new Solution();
 
+        // Test case 1
+        int[] nums1 = {1, 2, 3, 1};
+        int k1 = 3;
+        System.out.println("Output: " + solution.containsNearbyDuplicate(nums1, k1)); // Output: true
+
+        // Test case 2
+        int[] nums2 = {1, 0, 1, 1};
+        int k2 = 1;
+        System.out.println("Output: " + solution.containsNearbyDuplicate(nums2, k2)); // Output: true
+
+        // Test case 3
+        int[] nums3 = {1, 2, 3, 1, 2, 3};
+        int k3 = 2;
+        System.out.println("Output: " + solution.containsNearbyDuplicate(nums3, k3)); // Output: false
     }
 }
